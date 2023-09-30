@@ -1,0 +1,43 @@
+// Create a MongoDB collection for the "City Strikers" football team
+db.createCollection("football_team_players")
+
+// Insert sample player data into the collection
+db.football_team_players.insertMany([
+  {
+    name: "John Doe",
+    position: "Quarterback",
+    touchdowns_thrown: 25,
+    rushing_yards: 150,
+    sacks: 10,
+    field_goals_made: 5,
+    field_goals_missed: 2,
+    catches_made: 0
+  },
+  {
+    name: "Jane Smith",
+    position: "Running Back",
+    touchdowns_thrown: 5,
+    rushing_yards: 500,
+    sacks: 2,
+    field_goals_made: 1,
+    field_goals_missed: 0,
+    catches_made: 20
+  },
+  // Add more player data here...
+])
+
+// Demonstrate 5 sample queries
+// 1. The Player with the most touchdown passes.
+db.football_team_players.find().sort({ touchdowns_thrown: -1 }).limit(1)
+
+// 2. The Player with the most rushing yards.
+db.football_team_players.find().sort({ rushing_yards: -1 }).limit(1)
+
+// 3. The Player with the least rushing yards.
+db.football_team_players.find().sort({ rushing_yards: 1 }).limit(1)
+
+// 4. A list of players sorted from most to fewest field goals made.
+db.football_team_players.find().sort({ field_goals_made: -1 })
+
+// 5. The Player with the most number of sacks.
+db.football_team_players.find().sort({ sacks: -1 }).limit(1)
